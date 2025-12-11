@@ -6,7 +6,7 @@ from .models import Pizza, Pedido, PedidoPizza
 
 def lista_pizzas(request):
     pizzas = Pizza.objects.filter(disponible=True)
-    return render(request, "lista_pizzas.html", {"pizzas": pizzas})
+    return render(request, "core/lista_pizzas.html", {"pizzas": pizzas})
 
 
 def crear_pedido(request):
@@ -35,11 +35,15 @@ def crear_pedido(request):
                         cantidad=cantidad
                     )
 
-        return redirect("pedido_exitoso")
+        return redirect("core/pedido_exitoso")
 
     pizzas = Pizza.objects.filter(disponible=True)
-    return render(request, "crear_pedido.html", {"pizzas": pizzas})
+    return render(request, "core/crear_pedido.html", {"pizzas": pizzas})
 
 
 def pedido_exitoso(request):
     return render(request, "pedido_exitoso.html")
+
+def listar_pedidos(request):
+    pedidos = Pedido.objects.all().order_by('-fecha')  # últimos primero
+    return render(request, 'core/listar_pedidos.html', {'pedidos': pedidos})
