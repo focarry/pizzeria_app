@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+
+{% block title %}Pedido enviado{% endblock %}
+
+{% block content %}
+<div class="alert alert-success">
+    <h3>¡Pedido registrado correctamente!</h3>
+</div>
+
+<a href="/pedidos/" class="btn btn-secondary">Ver pedidos</a>
+<a href="/pedido/nuevo/" class="btn btn-primary">Crear otro pedido</a>
+{% endblock %}

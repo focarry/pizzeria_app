@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+{% block title %}Nuevo Pedido{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Crear Pedido</h1>
+
+<form method="POST" class="card p-4 shadow-sm bg-white">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">Nombre del cliente</label>
+        <input type="text" class="form-control" name="nombre_cliente" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Dirección</label>
+        <input type="text" class="form-control" name="direccion" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="text" class="form-control" name="telefono" required>
+    </div>
+
+    <h4 class="mt-4">Pizzas</h4>
+    <div class="row">
+        {% for pizza in pizzas %}
+            <div class="col-md-4 mb-3">
+                <div class="card p-3">
+                    <h5>{{ pizza.nombre }}</h5>
+                    <p>${{ pizza.precio }}</p>
+                    <input type="number" class="form-control" name="pizza_{{ pizza.id }}" min="0" value="0">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="btn btn-primary w-100 mt-3">Enviar Pedido</button>
+</form>
+
+{% endblock %}
