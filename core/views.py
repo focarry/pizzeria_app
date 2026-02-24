@@ -42,7 +42,7 @@ def crear_pedido(request):
 
 
 def pedido_exitoso(request):
-    return render(request, "pedido_exitoso.html")
+    return render(request, "core/pedido_exitoso.html")
 
 def listar_pedidos(request):
     pedidos = Pedido.objects.all().order_by('-fecha')  # últimos primero
