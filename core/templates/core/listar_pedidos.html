@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+
+{% block title %}Pedidos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Pedidos realizados</h1>
+{% if pedidos %}
+    <div class="list-group">
+        {% for pedido in pedidos %}
+            <div class="list-group-item mb-3 shadow-sm">
+                <h5>{{ pedido.nombre_cliente }}</h5>
+                <p><strong>Dirección:</strong> {{ pedido.direccion }}</p>
+                <p><strong>Teléfono:</strong> {{ pedido.telefono }}</p>
+                <p><strong>Pizzas:</strong></p>
+                <ul>
+                    {% for pizza in pedido.pizzas.all %}
+                        <li>{{ pizza.nombre }} (x{{ pizza.cantidad }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info">No hay pedidos registrados.</div>
+{% endif %}
+
+{% endblock %}
