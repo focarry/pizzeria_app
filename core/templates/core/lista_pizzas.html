@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,3 +21,27 @@
     <a href="/pedido/nuevo/">Crear un pedido</a>
 </body>
 </html>
+=======
+{% extends "core/base.html" %}
+
+{% block title %}Pizzas disponibles{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Pizzas disponibles</h1>
+
+<div class="row">
+    {% for pizza in pizzas %}
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pizza.nombre }}</h5>
+                    <p class="card-text">{{ pizza.descripcion }}</p>
+                    <p><strong>${{ pizza.precio }}</strong></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+>>>>>>> 546faa36da7f17de4215159d3527bc2ecf3d8e34

@@ -1,36 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Crear Pedido</title>
-</head>
-<body>
-    <h1>Crear Pedido</h1>
 
-    <form method="POST">
-        {% csrf_token %}
+{% extends "core/base.html" %}
 
-        <label>Nombre del cliente:</label>
-        <input type="text" name="nombre_cliente" required><br><br>
+{% block title %}Nuevo Pedido{% endblock %}
 
-        <label>Dirección:</label>
-        <input type="text" name="direccion" required><br><br>
+{% block content %}
+<h1 class="mb-4">Crear Pedido</h1>
 
-        <label>Teléfono:</label>
-        <input type="text" name="telefono" required><br><br>
+<form method="POST" class="card p-4 shadow-sm bg-white">
+    {% csrf_token %}
 
-        <h3>Pizzas:</h3>
+    <div class="mb-3">
+        <label class="form-label">Nombre del cliente</label>
+        <input type="text" class="form-control" name="nombre_cliente" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Dirección</label>
+        <input type="text" class="form-control" name="direccion" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="text" class="form-control" name="telefono" required>
+    </div>
+
+    <h4 class="mt-4">Pizzas</h4>
+    <div class="row">
         {% for pizza in pizzas %}
-            <label>
-                {{ pizza.nombre }} - ${{ pizza.precio }}
-            </label>
-            <input type="number" name="pizza_{{ pizza.id }}" min="0" value="0"><br>
+            <div class="col-md-4 mb-3">
+                <div class="card p-3">
+                    <h5>{{ pizza.nombre }}</h5>
+                    <p>${{ pizza.precio }}</p>
+                    <input type="number" class="form-control" name="pizza_{{ pizza.id }}" min="0" value="0">
+                </div>
+            </div>
         {% endfor %}
+    </div>
 
-        <br>
-        <button type="submit">Enviar Pedido</button>
-    </form>
+    <button class="btn btn-primary w-100 mt-3">Enviar Pedido</button>
+</form>
 
-    <br>
-    <a href="/pizzas/">Volver a pizzas</a>
-</body>
-</html>
+{% endblock %}

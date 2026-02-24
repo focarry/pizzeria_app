@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,3 +12,17 @@
     <a href="/pedidos/">Ver todos los pedidos</a>
 </body>
 </html>
+=======
+{% extends "core/base.html" %}
+
+{% block title %}Pedido enviado{% endblock %}
+
+{% block content %}
+<div class="alert alert-success">
+    <h3>¡Pedido registrado correctamente!</h3>
+</div>
+
+<a href="/pedidos/" class="btn btn-secondary">Ver pedidos</a>
+<a href="/pedido/nuevo/" class="btn btn-primary">Crear otro pedido</a>
+{% endblock %}
+>>>>>>> 546faa36da7f17de4215159d3527bc2ecf3d8e34
