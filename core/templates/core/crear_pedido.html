@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Pedido</title>
+</head>
+<body>
+    <h1>Crear Pedido</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Nombre del cliente:</label>
+        <input type="text" name="nombre_cliente" required><br><br>
+
+        <label>Dirección:</label>
+        <input type="text" name="direccion" required><br><br>
+
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" required><br><br>
+
+        <h3>Pizzas:</h3>
+        {% for pizza in pizzas %}
+            <label>
+                {{ pizza.nombre }} - ${{ pizza.precio }}
+            </label>
+            <input type="number" name="pizza_{{ pizza.id }}" min="0" value="0"><br>
+        {% endfor %}
+
+        <br>
+        <button type="submit">Enviar Pedido</button>
+    </form>
+
+    <br>
+    <a href="/pizzas/">Volver a pizzas</a>
+</body>
+</html>

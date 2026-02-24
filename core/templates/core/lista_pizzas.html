@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Pizzas</title>
+</head>
+<body>
+    <h1>Pizzas Disponibles</h1>
+
+    <ul>
+        {% for pizza in pizzas %}
+            <li>
+                <strong>{{ pizza.nombre }}</strong> - ${{ pizza.precio }} <br>
+                {{ pizza.descripcion }}
+            </li>
+        {% empty %}
+            <li>No hay pizzas cargadas.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/pedido/nuevo/">Crear un pedido</a>
+</body>
+</html>

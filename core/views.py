@@ -11,7 +11,7 @@ def lista_pizzas(request):
 
 def crear_pedido(request):
     if request.method == "POST":
-        nombre = request.POST.get("nombre")
+        nombre = request.POST.get("nombre_cliente")
         direccion = request.POST.get("direccion")
         telefono = request.POST.get("telefono")
 
@@ -35,14 +35,14 @@ def crear_pedido(request):
                         cantidad=cantidad
                     )
 
-        return redirect("core/pedido_exitoso")
+        return redirect("pedido_exitoso")
 
     pizzas = Pizza.objects.filter(disponible=True)
     return render(request, "core/crear_pedido.html", {"pizzas": pizzas})
 
 
 def pedido_exitoso(request):
-    return render(request, "pedido_exitoso.html")
+    return render(request, "core/pedido_exitoso.html")
 
 def listar_pedidos(request):
     pedidos = Pedido.objects.all().order_by('-fecha')  # últimos primero
