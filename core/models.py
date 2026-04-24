@@ -5,6 +5,7 @@ class Pizza(models.Model):
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=6, decimal_places=2)
     disponible = models.BooleanField(default=True)
+    imagen = models.ImageField(upload_to='pizzas/', null=True, blank=True)
 
     def __str__(self):
         return self.nombre

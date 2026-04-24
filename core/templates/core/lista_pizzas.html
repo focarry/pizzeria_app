@@ -9,6 +9,9 @@
     {% for pizza in pizzas %}
         <div class="col-md-4">
             <div class="card mb-3 shadow-sm">
+                {% if pizza.imagen %}
+                    <img src="{{ pizza.imagen.url }}" class="card-img-top" alt="{{ pizza.nombre }}" style="height: 200px; object-fit: cover;">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ pizza.nombre }}</h5>
                     <p class="card-text">{{ pizza.descripcion }}</p>

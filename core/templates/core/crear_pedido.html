@@ -29,8 +29,12 @@
         {% for pizza in pizzas %}
             <div class="col-md-4 mb-3">
                 <div class="card p-3">
+                    {% if pizza.imagen %}
+                        <img src="{{ pizza.imagen.url }}" class="card-img-top mb-2" alt="{{ pizza.nombre }}" style="height: 150px; object-fit: cover;">
+                    {% endif %}
                     <h5>{{ pizza.nombre }}</h5>
-                    <p>${{ pizza.precio }}</p>
+                    <p class="text-muted small">{{ pizza.descripcion }}</p>
+                    <p class="fw-bold">${{ pizza.precio }}</p>
                     <input type="number" class="form-control" name="pizza_{{ pizza.id }}" min="0" value="0">
                 </div>
             </div>

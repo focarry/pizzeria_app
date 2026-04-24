@@ -7,6 +7,7 @@ class PizzaAdmin(admin.ModelAdmin):
     list_display = ("nombre", "precio", "disponible")
     list_filter = ("disponible",)
     search_fields = ("nombre",)
+    fields = ("nombre", "descripcion", "precio", "disponible", "imagen")
 
 
 @admin.register(Pedido)
